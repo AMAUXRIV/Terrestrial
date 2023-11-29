@@ -15,8 +15,33 @@ model User {
   password String @db.VarChar(100)
   name     String @db.VarChar(100)
   token    String? @db.VarChar(100)
+  course Course[]
 
   @@map("users")
 }
+
+model Course {
+  id Int @id @default(autoincrement())
+  courseName String @db.VarChar(100)
+  thumbnail String @db.VarChar(255)
+  courseType CourseType
+  describe String @db.VarChar(255)
+  learning String @db.Text()
+  username String @db.VarChar(100)
+  user User @relation(fields:[username],references:[username])
+
+  @@map("course")
+}
+
+enum CourseType {
+  Frontend
+  Backend
+  Data
+}
+
+
+
+
+
 
 
