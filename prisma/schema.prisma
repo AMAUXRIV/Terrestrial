@@ -15,12 +15,12 @@ model User {
   password String @db.VarChar(100)
   name     String @db.VarChar(100)
   token    String? @db.VarChar(100)
-  course Course[]
+  contacts Contact[]
 
   @@map("users")
 }
 
-model Course {
+model Contact {
   id Int @id @default(autoincrement())
   courseName String @db.VarChar(100)
   thumbnail String @db.VarChar(255)
@@ -30,7 +30,7 @@ model Course {
   username String @db.VarChar(100)
   user User @relation(fields:[username],references:[username])
 
-  @@map("course")
+  @@map("contacts")
 }
 
 enum CourseType {

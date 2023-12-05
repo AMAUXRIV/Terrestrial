@@ -30,17 +30,16 @@ export const getTestUser = async () => {
 
 
 
-export const removeAllTestCourses = async () => {
-    await prismaClient.course.deleteMany({
+export const removeAllTestContacts = async () => {
+    await prismaClient.contact.deleteMany({
         where: {
             username: 'test'
         }
     });
 }
 
-export const createTestCourse = async () => {
-    await prismaClient.course.create({
-        
+export const createTestContact = async () => {
+    await prismaClient.contact.create({
         data: {
             username: "test",
             courseName : "Belajar HTML",
@@ -52,23 +51,8 @@ export const createTestCourse = async () => {
     })
 }
 
-export const createManyTestCourses = async () => {
-    for (let i = 0; i < 15; i++) {
-        await prismaClient.course.create({
-            data: {
-                username: `test ${i}`,
-                courseName: `test ${i}`,
-                thumbnail: `test ${i}`,
-                courseType: "Frontend",
-                describe: `ini deskripsi ke ${i}`,
-                learning: `ini belajar ke ${i}`
-            }
-        })
-    }
-}
-
-export const getTestCourse = async () => {
-    return prismaClient.course.findFirst({
+export const getTestContact = async () => {
+    return prismaClient.contact.findFirst({
         where: {
             username: 'test'
         }
