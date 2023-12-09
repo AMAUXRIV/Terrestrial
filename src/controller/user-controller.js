@@ -2,9 +2,12 @@ import userService from "../service/user-service.js";
 
 const register = async (req, res, next) => {
     try {
-        const result = await userService.register(req.body);
+        
+        await userService.register(req.body);
+
         res.status(200).json({
-            data: result
+            error: false,
+            message: 'User Created',
         });
     } catch (e) {
         next(e);
@@ -15,7 +18,9 @@ const login = async (req, res, next) => {
     try {
         const result = await userService.login(req.body);
         res.status(200).json({
-            data: result
+            error: false,
+            message: 'Success Bro',
+            loginResult : result
         });
     } catch (e) {
         next(e);
@@ -24,8 +29,8 @@ const login = async (req, res, next) => {
 
 const get = async (req, res, next) => {
     try {
-        const username = req.user.username;
-        const result = await userService.get(username);
+        const email = req.user.email;
+        const result = await userService.get(email);
         res.status(200).json({
             data: result
         });
@@ -36,9 +41,9 @@ const get = async (req, res, next) => {
 
 const update = async (req, res, next) => {
     try {
-        const username = req.user.username;
+        const email = req.user.email;
         const request = req.body;
-        request.username = username;
+        request.email = email;
 
         const result = await userService.update(request);
         res.status(200).json({
@@ -51,9 +56,10 @@ const update = async (req, res, next) => {
 
 const logout = async (req, res, next) => {
     try {
-        await userService.logout(req.user.username);
+        await userService.logout(req.user.email);
         res.status(200).json({
-            data: "OK"
+            error: false,
+            message: 'Logout Success'
         });
     } catch (e) {
         next(e);

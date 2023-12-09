@@ -14,13 +14,13 @@ describe('POST /api/users', function () {
         const result = await supertest(web)
             .post('/api/users')
             .send({
-                username: 'test',
+                email: 'test',
                 password: 'rahasia',
                 name: 'test'
             });
 
         expect(result.status).toBe(200);
-        expect(result.body.data.username).toBe("test");
+        expect(result.body.data.email).toBe("test");
         expect(result.body.data.name).toBe("test");
         expect(result.body.data.password).toBeUndefined();
     });
@@ -29,7 +29,7 @@ describe('POST /api/users', function () {
         const result = await supertest(web)
             .post('/api/users')
             .send({
-                username: '',
+                email: '',
                 password: '',
                 name: ''
             });
@@ -40,11 +40,11 @@ describe('POST /api/users', function () {
         expect(result.body.errors).toBeDefined();
     });
 
-    it('should reject if username already registered', async () => {
+    it('should reject if email already registered', async () => {
         let result = await supertest(web)
             .post('/api/users')
             .send({
-                username: 'test',
+                email: 'test',
                 password: 'rahasia',
                 name: 'test'
             });
@@ -52,14 +52,14 @@ describe('POST /api/users', function () {
         logger.info(result.body);
 
         expect(result.status).toBe(200);
-        expect(result.body.data.username).toBe("test");
+        expect(result.body.data.email).toBe("test");
         expect(result.body.data.name).toBe("test");
         expect(result.body.data.password).toBeUndefined();
 
         result = await supertest(web)
             .post('/api/users')
             .send({
-                username: 'test',
+                email: 'test',
                 password: 'rahasia',
                 name: 'test'
             });
@@ -84,7 +84,7 @@ describe('POST /api/users/login', function () {
         const result = await supertest(web)
             .post('/api/users/login')
             .send({
-                username: "test",
+                email: "test",
                 password: "rahasia"
             });
 
@@ -99,7 +99,7 @@ describe('POST /api/users/login', function () {
         const result = await supertest(web)
             .post('/api/users/login')
             .send({
-                username: "",
+                email: "",
                 password: ""
             });
 
@@ -113,7 +113,7 @@ describe('POST /api/users/login', function () {
         const result = await supertest(web)
             .post('/api/users/login')
             .send({
-                username: "test",
+                email: "test",
                 password: "salah"
             });
 
@@ -123,11 +123,11 @@ describe('POST /api/users/login', function () {
         expect(result.body.errors).toBeDefined();
     });
 
-    it('should reject login if username is wrong', async () => {
+    it('should reject login if email is wrong', async () => {
         const result = await supertest(web)
             .post('/api/users/login')
             .send({
-                username: "salah",
+                email: "salah",
                 password: "salah"
             });
 
@@ -153,7 +153,7 @@ describe('GET /api/users/current', function () {
             .set('Authorization', 'test');
 
         expect(result.status).toBe(200);
-        expect(result.body.data.username).toBe('test');
+        expect(result.body.data.email).toBe('test');
         expect(result.body.data.name).toBe('test');
     });
 
@@ -186,7 +186,7 @@ describe('PATCH /api/users/current', function () {
             });
 
         expect(result.status).toBe(200);
-        expect(result.body.data.username).toBe("test");
+        expect(result.body.data.email).toBe("test");
         expect(result.body.data.name).toBe("Eko");
 
         const user = await getTestUser();
@@ -202,7 +202,7 @@ describe('PATCH /api/users/current', function () {
             });
 
         expect(result.status).toBe(200);
-        expect(result.body.data.username).toBe("test");
+        expect(result.body.data.email).toBe("test");
         expect(result.body.data.name).toBe("Eko");
     });
 
@@ -215,7 +215,7 @@ describe('PATCH /api/users/current', function () {
             });
 
         expect(result.status).toBe(200);
-        expect(result.body.data.username).toBe("test");
+        expect(result.body.data.email).toBe("test");
         expect(result.body.data.name).toBe("test");
 
         const user = await getTestUser();

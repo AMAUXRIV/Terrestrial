@@ -8,7 +8,10 @@ const createContactValidation = Joi.object({
   learning: Joi.string().required()
 });
 
+
+
 const getContactValidation = Joi.number().positive().required();
+
 
 export {
     createContactValidation,

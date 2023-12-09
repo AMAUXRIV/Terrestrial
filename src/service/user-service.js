@@ -15,12 +15,12 @@ const register = async (request) => {
 
     const countUser = await prismaClient.user.count({
         where: {
-            username: user.username
+            email: user.email
         }
     });
 
     if (countUser === 1) {
-        throw new ResponseError(400, "Username already exists");
+        throw new ResponseError(400, "email already exists");
     }
 
     user.password = await bcrypt.hash(user.password, 10);
@@ -28,7 +28,7 @@ const register = async (request) => {
     return prismaClient.user.create({
         data: user,
         select: {
-            username: true,
+            email: true,
             name: true
         }
     });
@@ -39,21 +39,21 @@ const login = async (request) => {
 
     const user = await prismaClient.user.findUnique({
         where: {
-            username: loginRequest.username
+            email: loginRequest.email
         },
         select: {
-            username: true,
+            email: true,
             password: true
         }
     });
 
     if (!user) {
-        throw new ResponseError(401, "Username or password wrong");
+        throw new ResponseError(401, "email or password wrong");
     }
 
     const isPasswordValid = await bcrypt.compare(loginRequest.password, user.password);
     if (!isPasswordValid) {
-        throw new ResponseError(401, "Username or password wrong");
+        throw new ResponseError(401, "email or password wrong");
     }
 
     const token = uuid().toString()
@@ -62,7 +62,7 @@ const login = async (request) => {
             token: token
         },
         where: {
-            username: user.username
+            email: user.email
         },
         select: {
             token: true
@@ -70,15 +70,15 @@ const login = async (request) => {
     });
 }
 
-const get = async (username) => {
-    username = validate(getUserValidation, username);
+const get = async (email) => {
+    email = validate(getUserValidation, email);
 
     const user = await prismaClient.user.findUnique({
         where: {
-            username: username
+            email: email
         },
         select: {
-            username: true,
+            email: true,
             name: true
         }
     });
@@ -95,7 +95,7 @@ const update = async (request) => {
 
     const totalUserInDatabase = await prismaClient.user.count({
         where: {
-            username: user.username
+            email: user.email
         }
     });
 
@@ -113,22 +113,22 @@ const update = async (request) => {
 
     return prismaClient.user.update({
         where: {
-            username: user.username
+            email: user.email
         },
         data: data,
         select: {
-            username: true,
+            email: true,
             name: true
         }
     })
 }
 
-const logout = async (username) => {
-    username = validate(getUserValidation, username);
+const logout = async (email) => {
+    email = validate(getUserValidation, email);
 
     const user = await prismaClient.user.findUnique({
         where: {
-            username: username
+            email: email
         }
     });
 
@@ -138,13 +138,13 @@ const logout = async (username) => {
 
     return prismaClient.user.update({
         where: {
-            username: username
+            email: email
         },
         data: {
             token: null
         },
         select: {
-            username: true
+            email: true
         }
     })
 }

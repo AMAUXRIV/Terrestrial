@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 export const removeTestUser = async () => {
     await prismaClient.user.deleteMany({
         where: {
-            username: "test"
+            email: "test"
         }
     });
 }
@@ -12,7 +12,7 @@ export const removeTestUser = async () => {
 export const createTestUser = async () => {
     await prismaClient.user.create({
         data: {
-            username: "test",
+            email: "test",
             password: await bcrypt.hash("rahasia", 10),
             name: "test",
             token: "test"
@@ -23,7 +23,7 @@ export const createTestUser = async () => {
 export const getTestUser = async () => {
     return prismaClient.user.findUnique({
         where: {
-            username: "test"
+            email: "test"
         }
     });
 }
@@ -33,7 +33,7 @@ export const getTestUser = async () => {
 export const removeAllTestContacts = async () => {
     await prismaClient.contact.deleteMany({
         where: {
-            username: 'test'
+            email: 'test'
         }
     });
 }
@@ -41,7 +41,7 @@ export const removeAllTestContacts = async () => {
 export const createTestContact = async () => {
     await prismaClient.contact.create({
         data: {
-            username: "test",
+            email: "test",
             courseName : "Belajar HTML",
             thumbnail : "ok",
             courseType : "Frontend",
@@ -54,7 +54,7 @@ export const createTestContact = async () => {
 export const getTestContact = async () => {
     return prismaClient.contact.findFirst({
         where: {
-            username: 'test'
+            email: 'test'
         }
     })
 }

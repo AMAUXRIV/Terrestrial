@@ -12,8 +12,9 @@ userRouter.patch('/api/users/current', userController.update);
 userRouter.delete('/api/users/logout', userController.logout);
 
 // Course API
-userRouter.post('/api/contacts', courseController.create);
-userRouter.get('/api/contacts/:contactId',courseController.get);
+userRouter.post('/api/course/create', courseController.create);
+userRouter.get('/api/course',courseController.getContact);
+userRouter.get('/api/course/:id',courseController.getContactDetail);
 
 
 

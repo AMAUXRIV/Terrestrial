@@ -14,20 +14,36 @@ const create = async (req, res, next) => {
     }
 }
 
-const get = async (req, res, next) => {
+const getContact = async (req, res, next) => {
     try {
-        const user = req.user;
-        const contactId = req.params.contactId;
-        const result = await contactService.get(user, contactId);
+        const contacts = await contactService.getContact();
         res.status(200).json({
-            data: result
-        })
-    } catch (e) {
-        next(e);
-    }
+            error: false,
+            message: 'All course retrieved',
+            data: contacts,
+    });
+  } catch (error) {
+    next(error);
+  }
 }
+
+const getContactDetail = async (req, res, next) => {
+  try {
+    const contactId = req.params.id;
+    const detail = await contactService.getContactDetail(contactId);
+    res.status(200).json({
+      error: false,
+      message: 'Course detail retrieved',
+      data: detail,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 
 export default {
     create,
-    get
+    getContact,
+    getContactDetail
 }
