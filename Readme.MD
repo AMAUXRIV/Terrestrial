@@ -3,8 +3,9 @@
 # API => U S E R
 
 ## - Sign Up 
+```
 Endpoint : POST /api/users/signup
-
+```
 Request Body :
 
 
@@ -31,9 +32,9 @@ Response Body Failed :
 }
 ```
 ## - Login User API
-
+```
 Endpoint : POST /api/users/login
-
+```
 Request Body :
 
 ```json
@@ -63,8 +64,9 @@ Response Body Failed :
 ```
 
 ## - Get User API
+```
 Endpoint : GET /api/users/current
-
+```
 Headers:
 - Authorization : token
 
@@ -86,8 +88,9 @@ Response Body errors :
 ```
 
 ## - Update User API
+```
 Endpoint : PATCH /api/users/
-
+```
 Request  Body :
 
 Headers:
@@ -123,8 +126,9 @@ Response Body Failed :
 
 
 ## - Logout User API
+```
 Endpoint : DELETE api/users/logout
-
+```
 Headers:
 - Authorization : token
 
@@ -144,9 +148,12 @@ Response Body errors :
 ```
 ## =  =  =  =  =  =  =  =  =  =  =  =  =  =  =  =  = = =  =  =  =  =  =  
 # API => C O U R S E
- 
 
+## Create Course API
+
+```
 Endpoint : POST /api/course/create
+```
 
 Headers : 
 - Authorization : token
@@ -187,9 +194,9 @@ Response Body Error :
 ```
 
 ## Get Course API
-
+```
 Endpoint : GET /api/course
-
+```
 Headers :
 - Authorization : token
 
@@ -225,9 +232,9 @@ Response Body Error :
 ```
 
 ## Get Detail Course API
-
-Endpoint : GET /api/course/:id | (5)
-
+```
+Endpoint : GET /api/course/:id |(5)
+```
 Headers :
 - Authorization : token
 
