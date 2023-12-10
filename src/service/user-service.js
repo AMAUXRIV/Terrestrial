@@ -65,6 +65,8 @@ const login = async (request) => {
             email: user.email
         },
         select: {
+            email:true,
+            name:true,
             token: true
         }
     });

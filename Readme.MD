@@ -50,7 +50,9 @@ Response Body Success :
     "error": false,
     "message": "Success Bro",
     "loginResult": {
-        "token": "c6b996e9-d79e-496e-9861-0b4ee10e88d3"
+        "email": "test@gmail.com",
+        "name": "test",
+        "token": "0cf22e11-70dc-49c8-9d26-fb2522ec809a"
     }
 }
 ```
@@ -91,7 +93,7 @@ Response Body errors :
 ```
 Endpoint : PATCH /api/users/
 ```
-Request  Body :
+
 
 Headers:
 - Authorization : token
