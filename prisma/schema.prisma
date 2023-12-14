@@ -16,6 +16,7 @@ model User {
   name     String @db.VarChar(100)
   token    String? @db.VarChar(100)
   contacts Contact[]
+  answers Answer[]
 
   @@map("users")
 }
@@ -28,10 +29,34 @@ model Contact {
   describe String @db.VarChar(255)
   learning String @db.Text()
   email String @db.VarChar(100)
+
   user User @relation(fields:[email],references:[email])
 
-  @@map("contacts")
+  @@map("contacts")  
 }
+
+model Question {
+  id Int @id @default(autoincrement())
+  queText String @db.VarChar(255)
+  answer Answer[]
+
+  @@map("questions")
+}
+
+
+model Answer {
+  id Int @id @default(autoincrement())
+  queId Int
+  answerText String @db.VarChar(255)
+  email String @db.VarChar(100)
+
+  user User @relation(fields: [email], references: [email])
+  question Question @relation(fields: [queId], references: [id])
+
+  @@map("answers")
+}
+
+
 
 enum CourseType {
   Frontend

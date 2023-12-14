@@ -9,11 +9,12 @@ const createContactValidation = Joi.object({
 });
 
 
-
 const getContactValidation = Joi.number().positive().required();
-
 
 export {
     createContactValidation,
     getContactValidation
 }
+
+
+ 

@@ -262,3 +262,81 @@ Response Body Error :
   "errors" : "Course is not found"
 }
 ```
+
+## Get Question
+
+```
+Endpoint : Get /api/question
+```
+Headers :
+- Authorization : token
+
+Response Body Success :
+```json
+{
+    "error": false,
+    "message": "All Question retrieved",
+    "data": [
+        {
+            "id": 1,
+            "queText": "Apa yang Lebih Seru Buat Kamu?"
+        },
+        {
+            "id": 2,
+            "queText": "Apa yang Ingin Kamu Pelajari?"
+        },
+        {
+            "id": 3,
+            "queText": "Mata Pelajaran Apa Yang Kamu Suka?"
+        },
+        {
+            "id": 4,
+            "queText": "Dari Piliihan Di Bawah Ini, Kamu Lebih Suka Melakukan yang Mana?"
+        },
+        {
+            "id": 5,
+            "queText": "Dari Pilihan Di Bawah Ini, Mana yang Paling Menarik Menurutmu?"
+        },
+        {
+            "id": 6,
+            "queText": "Ketika Membuat Aplikasi, Hal Mana yang Kamu Prioritaskan?"
+        },
+        {
+            "id": 7,
+            "queText": "Ketika Ada Penawaran Kerja, Kamu Lebih Memilih Yang Mana?"
+        },
+        {
+            "id": 8,
+            "queText": "Kalau Kamu Mendapatkan Kesempatan Belajar, Kamu Lebih Tertarik Untuk Belajar Apa?"
+        }
+    ]
+}
+```
+## Post Answer
+
+```
+Endpoint: POST /api/answer
+```
+Headers :
+- Authorization : token
+
+Request Body :
+```json
+
+{
+  "questionId": 8,
+  "answerText": "Saya tertarik untuk membangun solusi yang inovatif dan memberikan dampak positif pada pengguna."
+}
+```
+
+Response Success 
+```json
+{
+    "data": {
+        "id": 3,
+        "answerText": "Saya tertarik untuk membangun solusi yang inovatif dan memberikan dampak positif pada pengguna."
+    }
+}
+
+
+
