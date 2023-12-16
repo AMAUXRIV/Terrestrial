@@ -2,7 +2,6 @@ import express from "express";
 import userController from "../controller/user-controller.js";
 import courseController from "../controller/course-controller.js";
 import questionController from "../controller/question-controller.js";
-import answerController from "../controller/answer-controller.js";
 import {authMiddleware} from "../middleware/auth-middleware.js";
 
 const userRouter = new express.Router();
@@ -22,9 +21,6 @@ userRouter.get('/api/course/:id',courseController.getContactDetail);
 userRouter.post('/api/question/create',questionController.createQuestion)
 userRouter.get('/api/question',questionController.getQuestion)
 
-
-// Answer API
-userRouter.post('/api/answer',answerController.create)
 
 
 

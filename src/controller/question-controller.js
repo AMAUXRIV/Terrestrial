@@ -12,17 +12,17 @@ const createQuestion = async (req,res,next) => {
     }
 }
 
-const getQuestion = async (req,res,next) => {
-    try{
-        const questions= await questionService.getQuestion();
+const getQuestion = async (req, res, next) => {
+    try {
+        const question = await questionService.getQuestion();
         res.status(200).json({
-            error:false,
-            message:"All Question retrieved",
-            data:questions,
-        });
-    } catch (error){
-        next (error);
-    }
+            error: false,
+            message: 'All Question retrieved',
+            data: question,
+    });
+  } catch (error) {
+    next(error);
+  }
 }
 
 export default {

@@ -262,11 +262,43 @@ Response Body Error :
   "errors" : "Course is not found"
 }
 ```
+## Create Question 
 
+```
+Endpoint : POST /api/question/create
+```
+Headers :
+- Authorization : token
+
+Request Body:
+
+```json
+{
+    "queText": "Kalau Kamu Mendapatkan Kesempatan Belajar, Kamu Lebih Tertarik Untuk Belajar Apa?",
+    "answer1":"FrontEnd",
+    "answer2":"BackEnd",
+    "answer3":"Data Science"
+
+}
+```
+
+Response Body Success :
+
+```json
+{
+    "data": {
+        "id": 17,
+        "queText": "Kalau Kamu Mendapatkan Kesempatan Belajar, Kamu Lebih Tertarik Untuk Belajar Apa?",
+        "answer1": "FrontEnd",
+        "answer2": "BackEnd",
+        "answer3": "Data Science"
+    }
+}
+```
 ## Get Question
 
 ```
-Endpoint : Get /api/question
+Endpoint : GET /api/question
 ```
 Headers :
 - Authorization : token
@@ -278,65 +310,66 @@ Response Body Success :
     "message": "All Question retrieved",
     "data": [
         {
-            "id": 1,
-            "queText": "Apa yang Lebih Seru Buat Kamu?"
+            "id": 10,
+            "queText": "Apa yang Lebih Seru Buat Kamu?",
+            "answer1": "Membuat Animasi",
+            "answer2": "Bermain Dengan Logika",
+            "answer3": "Menganalisis Data"
         },
         {
-            "id": 2,
-            "queText": "Apa yang Ingin Kamu Pelajari?"
+            "id": 11,
+            "queText": "Apa yang Ingin Kamu Pelajari?",
+            "answer1": "Cara Membuat Tampilan Website yang Menarik",
+            "answer2": "Cara Membuat Database",
+            "answer3": "Cara Mengelola Data dan Menganalisis Data"
         },
         {
-            "id": 3,
-            "queText": "Mata Pelajaran Apa Yang Kamu Suka?"
+            "id": 12,
+            "queText": "Mata Pelajaran Apa Yang Kamu Suka?",
+            "answer1": "Kesenian dan Kreativitas",
+            "answer2": "Matematika",
+            "answer3": "Statistika"
         },
         {
-            "id": 4,
-            "queText": "Dari Piliihan Di Bawah Ini, Kamu Lebih Suka Melakukan yang Mana?"
+            "id": 13,
+            "queText": "Dari Pilihan Di Bawah Ini, Kamu Lebih Suka Melakukan yang Mana?",
+            "answer1": "Mendesain ",
+            "answer2": "Belajar Mengasah Logika",
+            "answer3": "Mengolah Data"
         },
         {
-            "id": 5,
-            "queText": "Dari Pilihan Di Bawah Ini, Mana yang Paling Menarik Menurutmu?"
+            "id": 14,
+            "queText": "Dari Pilihan Di Bawah Ini, Mana yang Paling Menarik Menurutmu?",
+            "answer1": "Membuat Sketsa",
+            "answer2": "Membuat Database",
+            "answer3": "Mengolah dan Menganalisis Data"
         },
         {
-            "id": 6,
-            "queText": "Ketika Membuat Aplikasi, Hal Mana yang Kamu Prioritaskan?"
+            "id": 15,
+            "queText": "Ketika Membuat Aplikasi, Hal Mana yang Kamu Prioritaskan?",
+            "answer1": "Tampilan Aplikasi Yang Menarik",
+            "answer2": "Menyiapkan Penyimpanan",
+            "answer3": "Menyiapkan Data Yang Akurat"
         },
         {
-            "id": 7,
-            "queText": "Ketika Ada Penawaran Kerja, Kamu Lebih Memilih Yang Mana?"
+            "id": 16,
+            "queText": "Ketika Ada Penawaran Kerja, Kamu Lebih Memilih Yang Mana?",
+            "answer1": "Kerja Untuk Membuat Desain",
+            "answer2": "Kerja Untuk Memastikan Keamanan Aplikasi",
+            "answer3": "Kerja Untuk Menganalisis Data"
         },
         {
-            "id": 8,
-            "queText": "Kalau Kamu Mendapatkan Kesempatan Belajar, Kamu Lebih Tertarik Untuk Belajar Apa?"
+            "id": 17,
+            "queText": "Kalau Kamu Mendapatkan Kesempatan Belajar, Kamu Lebih Tertarik Untuk Belajar Apa?",
+            "answer1": "FrontEnd",
+            "answer2": "BackEnd",
+            "answer3": "Data Science"
         }
     ]
 }
 ```
-## Post Answer
 
-```
-Endpoint: POST /api/answer
-```
-Headers :
-- Authorization : token
 
-Request Body :
-```json
-
-{
-  "questionId": 8,
-  "answerText": "Saya tertarik untuk membangun solusi yang inovatif dan memberikan dampak positif pada pengguna."
-}
-```
-
-Response Success 
-```json
-{
-    "data": {
-        "id": 3,
-        "answerText": "Saya tertarik untuk membangun solusi yang inovatif dan memberikan dampak positif pada pengguna."
-    }
-}
 
 
 
